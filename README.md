@@ -1,5 +1,29 @@
 # D2iQ Take Home Challenge
 
+## Overview
+This is a simple in-memory cache service utilizing a least recently used (LRU) policy.
+
+## Limitations
+- Data is not durable by design and will be lost on system failure. An easily implemented solution would be to persist this data to disk or use a service like Redis for less frequently accessed keys.
+- In a real life implementation, this cache would support additional data types instead of just strings.
+
+## Requirements
+You should have `docker` and `make` installed.
+
+The following `make` commands are available:
+- `make build`: Run unit tests and create the docker image
+- `make run`: Execute `make build` and run the container in the background
+- `make stop`: Stop the active container
+
+## Configuration Variables
+
+| Variable   | Default                  |
+|------------|--------------------------|
+| LOG_LEVEL  | info                     |
+| CACHE_SIZE | 250                      |
+
+---
+
 ## Cache with eviction policy
 
 **Problem Statement**: Create an in-memory cache in Go for storing String values based on a String key. Expect that the cache will continually have previously unseen keys added to it, and that some keys will be fetched more frequently than others.
